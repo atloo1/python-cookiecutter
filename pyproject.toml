@@ -1,0 +1,17 @@
+[project]
+name = "python-cookiecutter"
+version = "0.1.0"
+description = "Poetry managed Python project template"
+authors = [
+    {name = "atloo1"}
+]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.9,<4"
+
+[tool.poetry.dependencies]
+cruft = "^>=2,<3"
+
+[build-system]
+requires = ["poetry-core>=2,<3"]
+build-backend = "poetry.core.masonry.api"

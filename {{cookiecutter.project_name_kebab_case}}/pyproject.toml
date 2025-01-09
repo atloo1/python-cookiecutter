@@ -1,0 +1,30 @@
+[project]
+name = "{{cookiecutter.project_name_kebab_case}}"
+version = "{{cookiecutter.project_version}}"
+description = "{{cookiecutter.project_description}}"
+authors = [
+    {name = "{{cookiecutter.project_author_name}}"}
+]
+license = "{{cookiecutter.project_license}}"
+readme = "README.md"
+requires-python = "{{cookiecutter.project_python_required}}"
+
+[tool.poetry.dependencies]
+click = ">=8,<9"
+
+[tool.poetry.group.dev.dependencies]
+mypy = ">=1,<2"
+pre-commit = ">=4,<5"
+pytest = ">=8,<9"
+ruff = ">=0.9,<1"
+
+[build-system]
+requires = ["poetry-core>=2,<3"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+lint.extend-select = ["I"]  # sort imports
+
+[tool.ruff.format]
+quote-style = "single"

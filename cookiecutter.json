@@ -1,0 +1,21 @@
+{
+  "project_name_kebab_case": "new-templated-project",
+  "project_author_name": "atloo1",
+  "project_author_email": "",
+  "project_description": "one line description",
+  "project_license": [
+    "Apache-2.0",
+    "BSD-3-Clause",
+    "MIT",
+    "OSL-3.0",
+    "proprietary"
+  ],
+  "project_python_required": ">=3.9,<4",
+  "project_version": "0.1.0",
+  "_copy_without_render": [
+    ".github/renovate.json",
+    ".github/workflows/ci.yaml"
+  ],
+  "__project_name_snake_case": "{{cookiecutter.project_name_kebab_case.replace('-', '_')}}",
+  "__project_url": "https://github.com/atloo1/{{cookiecutter.project_name_kebab_case}}"
+}
