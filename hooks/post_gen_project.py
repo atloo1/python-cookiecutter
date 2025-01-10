@@ -17,7 +17,6 @@ def main():
         PROJECT_LICENSE_FILEPATH,
     ])
     subprocess.run(f'rm -r {LICENSES_FOLDER}', shell=True)
-    # TODO consider groups remaining; it could just call for poetry install
     subprocess.run('poetry install --without dev', shell=True)
     subprocess.run('git add .', shell=True)
     subprocess.run('git commit -m "cookiecutter initial commit"', shell=True)
