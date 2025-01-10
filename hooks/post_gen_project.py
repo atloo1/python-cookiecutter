@@ -33,9 +33,9 @@ if '{{cookiecutter.enforce_opinionated_formatting}}' == 'no':
 if '{{cookiecutter.include_testing}}' == 'no':
     dependencies_to_remove |= TESTING_DEPENDENCIES
     raise NotImplementedError('https://github.com/atloo1/python-cookiecutter/issues/4')
-dependencies_to_remove_args = ' '.join(list(dependencies_to_remove))
+DEPENDENCIES_TO_REMOVE = ' '.join(list(dependencies_to_remove))
 
-# handle Docker
+
 
 
 def main():
@@ -48,7 +48,7 @@ def main():
     
     # pyproject.toml
     if dependencies_to_remove:
-        subprocess.run(f'poetry remove {dependencies_to_remove_args}', shell=True)
+        subprocess.run(f'poetry remove {DEPENDENCIES_TO_REMOVE}', shell=True)
     
     # README.md
     subprocess.run(f'mv {TARGET_README_PATH} {PROJECT_README_PATH}', shell=True)
