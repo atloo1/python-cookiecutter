@@ -60,8 +60,8 @@ cd {{cookiecutter.project_name_kebab_case}}/
     - #### step 1 (recommended): virtual environment setup with [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation)
 
         ```
-        pyenv install {{cookiecutter.project_python_required.split('>=')[1].split(',')[0].strip()}} --skip-existing
-        pyenv local {{cookiecutter.project_python_required.split('>=')[1].split(',')[0].strip()}}
+        pyenv install {{cookiecutter.project_python_required.split('>=')[1].split(',')[0]}} --skip-existing
+        pyenv local {{cookiecutter.project_python_required.split('>=')[1].split(',')[0]}}
         ```
 
     - #### step 2
