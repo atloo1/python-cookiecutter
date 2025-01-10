@@ -12,6 +12,22 @@
   ],
   "project_python_required": ">=3.9,<4",
   "project_version": "0.1.0",
+  "dockerize": [
+    "yes",
+    "no"
+  ],
+  "include_cli": [
+    "yes",
+    "no"
+  ],
+  "enforce_opinionated_formatting": [
+    "yes",
+    "no"
+  ],
+  "include_testing": [
+    "yes",
+    "no"
+  ],
   "_copy_without_render": [
     ".github/renovate.json",
     ".github/workflows/ci.yaml"
