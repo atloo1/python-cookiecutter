@@ -12,8 +12,16 @@ from typing import Union
 
 import click
 
+HERE = Path(__file__).resolve()
+PROJECT_ROOT = HERE.parent.parent
+DEFAULT_IN_FILEPATH = PROJECT_ROOT / 'in.txt'
+DEFAULT_OUT_FILEPATH = PROJECT_ROOT / 'out.txt'
 
-def main(in_filepath: Union[Path, str], out_filepath: Union[Path, str]):
+
+def main(
+    in_filepath: Union[Path, str] = DEFAULT_IN_FILEPATH,
+    out_filepath: Union[Path, str] = DEFAULT_OUT_FILEPATH,
+):
     """
     TODO docstring
 
@@ -30,13 +38,13 @@ def main(in_filepath: Union[Path, str], out_filepath: Union[Path, str]):
 
 
 @click.command()
-@click.option('--in-filepath', default='in.txt', type=click.Path(exists=True))
-@click.option('--out-filepath', default='out.txt')
+@click.option('--in-filepath', default=DEFAULT_IN_FILEPATH, type=click.Path(exists=True))
+@click.option('--out-filepath', default=DEFAULT_OUT_FILEPATH)
 def _main(in_filepath: str, out_filepath: str):
     """Private click CLI for main()."""
+    print(f'in_filepath is type {type(in_filepath)}')
     main(in_filepath, out_filepath)
 
 
 if __name__ == '__main__':
-    raise NotImplementedError('pass templated pytest')
     _main()
