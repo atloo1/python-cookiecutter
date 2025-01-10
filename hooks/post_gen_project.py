@@ -6,10 +6,13 @@ PROJECT_ROOT_PATH = Path('.').resolve()
 DOCKERFILE_PATH = PROJECT_ROOT_PATH / 'Dockerfile'
 DOCKERIGNORE_PATH = PROJECT_ROOT_PATH / '.dockerignore'
 LICENSES_FOLDER = PROJECT_ROOT_PATH / 'licenses' 
+MAINS_FOLDER = PROJECT_ROOT_PATH / 'mains' 
 READMES_FOLDER = PROJECT_ROOT_PATH / 'readmes' 
 PROJECT_LICENSE_PATH = PROJECT_ROOT_PATH / 'LICENSE'
+PROJECT_MAIN_PATH = PROJECT_ROOT_PATH / f'{{cookiecutter.__project_name_snake_case}}/main.py' 
 PROJECT_README_PATH = PROJECT_ROOT_PATH / 'README.md'
 TARGET_LICENSE_PATH = LICENSES_FOLDER / '{{cookiecutter.project_license}}.txt'
+TARGET_MAIN_PATH = MAINS_FOLDER / ('main.py' if '{{cookiecutter.include_cli}}' == 'no' else 'main_cli.py')
 TARGET_README_PATH = READMES_FOLDER / ('no_docker.md' if '{{cookiecutter.dockerize}}' == 'no' else 'docker.md')
 CLI_DEPENDENCIES = {
     'click',
@@ -26,7 +29,6 @@ TESTING_DEPENDENCIES = {
 dependencies_to_remove = set()
 if '{{cookiecutter.include_cli}}' == 'no':
     dependencies_to_remove |= CLI_DEPENDENCIES
-    raise NotImplementedError('https://github.com/atloo1/python-cookiecutter/issues/6')
 if '{{cookiecutter.enforce_opinionated_formatting}}' == 'no':
     dependencies_to_remove |= FORMATTING_DEPENDENCIES
     raise NotImplementedError('https://github.com/atloo1/python-cookiecutter/issues/7')
@@ -53,6 +55,10 @@ def main():
     # README.md
     subprocess.run(f'mv {TARGET_README_PATH} {PROJECT_README_PATH}', shell=True)
     subprocess.run(f'rm -r {READMES_FOLDER}', shell=True)
+    
+    # CLI
+    subprocess.run(f'mv {TARGET_MAIN_PATH} {PROJECT_MAIN_PATH}', shell=True)
+    subprocess.run(f'rm -r {MAINS_FOLDER}', shell=True)
     
     subprocess.run('poetry install --without dev', shell=True)
     
