@@ -8,7 +8,7 @@
 [![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 
-Poetry managed Python project template with options for pre-commit, linting, testing, containerization, & CI/CD.
+`Poetry` managed Python project template with `pre-commit`, as well as options for opinionated formatting, testing, containerization, & CI/CD.
 
 ## prerequisites
 
