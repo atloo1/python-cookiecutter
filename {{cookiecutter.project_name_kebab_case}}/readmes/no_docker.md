@@ -30,44 +30,12 @@ pyenv install {{cookiecutter.project_python_required.split('>=')[1].split(',')[0
 pyenv local {{cookiecutter.project_python_required.split('>=')[1].split(',')[0].strip()}}
 ```
 
-## run
+## run (with [Poetry](https://python-poetry.org/docs/#installing-with-pipx))
 
-- ### via [Docker](https://docs.docker.com/get-started/get-docker/)
-
-    - #### part 1
-
-        ```
-        docker build . -t {{cookiecutter.__project_name_snake_case}}
-        ```
-
-    - #### part 2 (Bash)
-
-        ```
-        docker run \
-            --name {{cookiecutter.__project_name_snake_case}} \
-            {{cookiecutter.__project_name_snake_case}}
-        ```
-
-    - #### part 2 (PowerShell)
-
-        ```
-        docker run `
-            --name {{cookiecutter.__project_name_snake_case}} `
-            {{cookiecutter.__project_name_snake_case}}
-        ```
-
-    - #### part 3
-
-        ```
-        docker rm {{cookiecutter.__project_name_snake_case}}
-        ```
-
-- ### via Python interpreter with [Poetry](https://python-poetry.org/docs/#installing-with-pipx)
-
-    ```
-    poetry install --without dev
-    poetry run python -m {{cookiecutter.__project_name_snake_case}}.main
-    ```
+```
+poetry install --without dev
+poetry run python -m {{cookiecutter.__project_name_snake_case}}.main
+```
 
 ## develop
 
