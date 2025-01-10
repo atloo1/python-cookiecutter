@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.9,<4"
 
 [tool.poetry.dependencies]
-cruft = "^>=2,<3"
+cruft = ">=2,<3"
 
 [build-system]
 requires = ["poetry-core>=2,<3"]
