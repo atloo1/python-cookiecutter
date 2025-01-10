@@ -16,39 +16,77 @@
 
 ## prerequisites
 
-- [poetry](https://python-poetry.org/docs/#installing-with-pipx)
+### minimum
 
 ```
 git clone {{cookiecutter.__project_url}}.git
 cd {{cookiecutter.project_name_kebab_case}}/
 ```
 
-## run
+### recommended: virtual environment setup with [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation)
 
 ```
-poetry install --without dev
-poetry run python -m {{cookiecutter.__project_name_snake_case}}.main
+pyenv install {{cookiecutter.project_python_required.split('>=')[1].split(',')[0].strip()}} --skip-existing
+pyenv local {{cookiecutter.project_python_required.split('>=')[1].split(',')[0].strip()}}
 ```
+
+## run
+
+- ### via [Docker](https://docs.docker.com/get-started/get-docker/)
+
+    - #### part 1
+
+        ```
+        docker build . -t {{cookiecutter.__project_name_snake_case}}
+        ```
+
+    - #### part 2 (Bash)
+
+        ```
+        docker run \
+            --name {{cookiecutter.__project_name_snake_case}} \
+            {{cookiecutter.__project_name_snake_case}}
+        ```
+
+    - #### part 2 (PowerShell)
+
+        ```
+        docker run `
+            --name {{cookiecutter.__project_name_snake_case}} `
+            {{cookiecutter.__project_name_snake_case}}
+        ```
+
+    - #### part 3
+
+        ```
+        docker rm {{cookiecutter.__project_name_snake_case}}
+        ```
+
+- ### via Python interpreter with [Poetry](https://python-poetry.org/docs/#installing-with-pipx)
+
+    ```
+    poetry install --without dev
+    poetry run python -m {{cookiecutter.__project_name_snake_case}}.main
+    ```
 
 ## develop
 
-### prerequisites
+- ### [Poetry](https://python-poetry.org/docs/#installing-with-pipx) setup
 
-- [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation)
+    ```
+    poetry install
+    poetry run pre-commit install
+    ```
 
-### 1st time setup
+- ### proactively pre-commit
+    ```
+    poetry run pre-commit run --all-files
+    ```
 
-```
-pyenv install {{cookiecutter.project_python_required.split('>=')[1].split(',')[0].strip()}} --skip-existing   # or your choice
-pyenv local {{cookiecutter.project_python_required.split('>=')[1].split(',')[0].strip()}}   # or your choice
-poetry install
-poetry run pre-commit install
-```
+- ### proactively test locally, mirroring the GitHub action
 
-- [give Renovate repository access](https://github.com/apps/renovate)
+    ```
+    poetry run pytest
+    ```
 
-### test locally (preemptively pass the corresponding GitHub action)
-
-```
-poetry run pytest
-```
+- ### [give Renovate repository access](https://github.com/apps/renovate) if setting up own CI/CD
