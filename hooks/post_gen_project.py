@@ -59,6 +59,8 @@ def main():
     # CLI
     subprocess.run(f'mv {TARGET_MAIN_PATH} {PROJECT_MAIN_PATH}', shell=True)
     subprocess.run(f'rm -r {MAINS_FOLDER}', shell=True)
+    if '{{cookiecutter.include_cli}}' == 'no':
+        raise NotImplementedError('rm --help in README run: https://github.com/atloo1/python-cookiecutter/issues/16')
     
     # testing
     if '{{cookiecutter.include_testing}}' == 'no':

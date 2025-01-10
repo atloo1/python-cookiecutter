@@ -68,7 +68,7 @@ cd {{cookiecutter.project_name_kebab_case}}/
 
         ```
         poetry install --without dev
-        poetry run python -m {{cookiecutter.__project_name_snake_case}}.main
+        poetry run python -m {{cookiecutter.__project_name_snake_case}}.main --help
         ```
 
 ## develop
