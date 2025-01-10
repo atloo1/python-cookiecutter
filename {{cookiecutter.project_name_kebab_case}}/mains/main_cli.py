@@ -7,7 +7,7 @@ poetry run python -m {{cookiecutter.__project_name_snake_case}}.main --help
 ```
 """
 
-from pathlib import Path
+from pathlib import Path, PosixPath
 from typing import Union
 
 import click
@@ -39,10 +39,9 @@ def main(
 
 @click.command()
 @click.option('--in-filepath', default=DEFAULT_IN_FILEPATH, type=click.Path(exists=True))
-@click.option('--out-filepath', default=DEFAULT_OUT_FILEPATH)
-def _main(in_filepath: str, out_filepath: str):
+@click.option('--out-filepath', default=DEFAULT_OUT_FILEPATH, type=click.Path())
+def _main(in_filepath: PosixPath, out_filepath: PosixPath):
     """Private click CLI for main()."""
-    print(f'in_filepath is type {type(in_filepath)}')
     main(in_filepath, out_filepath)
 
 
