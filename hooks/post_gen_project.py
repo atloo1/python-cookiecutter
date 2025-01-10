@@ -11,11 +11,7 @@ PROJECT_LICENSE_FILEPATH = PROJECT_ROOT_PATH / 'LICENSE'
 def main():
     """initial repo setup"""
     subprocess.run('git init --initial-branch=main', shell=True)
-    subprocess.run([
-        'mv',
-        TARGET_LICENSE_FILEPATH,
-        PROJECT_LICENSE_FILEPATH,
-    ])
+    subprocess.run(f'mv {TARGET_LICENSE_FILEPATH} {PROJECT_LICENSE_FILEPATH}', shell=True)
     subprocess.run(f'rm -r {LICENSES_FOLDER}', shell=True)
     subprocess.run('poetry install --without dev', shell=True)
     subprocess.run('git add .', shell=True)
