@@ -20,7 +20,7 @@
     "yes",
     "no"
   ],
-  "enforce_opinionated_formatting": [
+  "opinionated_formatting": [
     "yes",
     "no"
   ],

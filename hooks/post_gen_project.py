@@ -29,7 +29,7 @@ TESTING_DEPENDENCIES = {
 dependencies_to_remove = set()
 if '{{cookiecutter.include_cli}}' == 'no':
     dependencies_to_remove |= CLI_DEPENDENCIES
-if '{{cookiecutter.enforce_opinionated_formatting}}' == 'no':
+if '{{cookiecutter.opinionated_formatting}}' == 'no':
     dependencies_to_remove |= FORMATTING_DEPENDENCIES
     raise NotImplementedError('https://github.com/atloo1/python-cookiecutter/issues/7')
 if '{{cookiecutter.include_testing}}' == 'no':
