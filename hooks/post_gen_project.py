@@ -43,7 +43,7 @@ def main():
         subprocess.run(f'rm -r {TESTS_FOLDER}', shell=True)
         raise NotImplementedError('edit ci.yaml: https://github.com/atloo1/python-cookiecutter/issues/4')
     
-    # optinionated formatting
+    # opinionated formatting
     if '{{cookiecutter.opinionated_formatting}}' == 'no':
         raise NotImplementedError('edit .pre-commit-config.yaml: https://github.com/atloo1/python-cookiecutter/issues/7')
     
