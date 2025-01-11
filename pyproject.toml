@@ -1,6 +1,6 @@
 [project]
 name = "python-cookiecutter"
-version = "0.3.0"
+version = "0.3.1"
 description = "Poetry managed Python project template"
 authors = [
     {name = "atloo1"}
