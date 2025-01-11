@@ -25,7 +25,6 @@ if '{{cookiecutter.include_cli}}' == 'no':
     dependencies_to_remove |= CLI_DEPENDENCIES
 if '{{cookiecutter.opinionated_formatting}}' == 'no':
     dependencies_to_remove |= FORMATTING_DEPENDENCIES
-    raise NotImplementedError('https://github.com/atloo1/python-cookiecutter/issues/7')
 if '{{cookiecutter.include_testing}}' == 'no':
     dependencies_to_remove |= TESTING_DEPENDENCIES
 DEPENDENCIES_TO_REMOVE = ' '.join(list(dependencies_to_remove))
@@ -43,6 +42,11 @@ def main():
     if '{{cookiecutter.include_testing}}' == 'no':
         subprocess.run(f'rm -r {TESTS_FOLDER}', shell=True)
         raise NotImplementedError('edit ci.yaml: https://github.com/atloo1/python-cookiecutter/issues/4')
+    
+    # optinionated formatting
+    if '{{cookiecutter.opinionated_formatting}}' == 'no':
+        raise NotImplementedError('edit pyproject.toml: https://github.com/atloo1/python-cookiecutter/issues/7')
+        raise NotImplementedError('edit .pre-commit-config.yaml: https://github.com/atloo1/python-cookiecutter/issues/7')
     
     subprocess.run('poetry install --without dev', shell=True)
     
