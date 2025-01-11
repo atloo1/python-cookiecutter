@@ -117,10 +117,14 @@ poetry run python -m {{cookiecutter.__project_name_snake_case}}.main{% if cookie
     poetry run pre-commit run --all-files
     ```
 
+{% if cookiecutter.include_testing == 'yes' %}
+
 - ### proactively test locally, mirroring the GitHub action
 
     ```
     poetry run pytest
     ```
+
+{% endif %}
 
 - ### [give Renovate repository access](https://github.com/apps/renovate) if setting up own CI/CD

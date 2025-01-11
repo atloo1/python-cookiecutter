@@ -42,8 +42,7 @@ def main():
     # testing
     if '{{cookiecutter.include_testing}}' == 'no':
         subprocess.run(f'rm -r {TESTS_FOLDER}', shell=True)
-        raise NotImplementedError('edit README: https://github.com/atloo1/python-cookiecutter/issues/7')
-        raise NotImplementedError('edit ci.yaml: https://github.com/atloo1/python-cookiecutter/issues/7')
+        raise NotImplementedError('edit ci.yaml: https://github.com/atloo1/python-cookiecutter/issues/4')
     
     subprocess.run('poetry install --without dev', shell=True)
     
