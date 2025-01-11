@@ -22,9 +22,13 @@ ruff = ">=0.9,<1"
 requires = ["poetry-core>=2,<3"]
 build-backend = "poetry.core.masonry.api"
 
+{% if cookiecutter.opinionated_formatting == 'yes' %}
+
 [tool.ruff]
 line-length = 120
 lint.extend-select = ["I"]  # sort imports
 
 [tool.ruff.format]
 quote-style = "single"
+
+{% endif %}

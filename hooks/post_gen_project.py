@@ -45,7 +45,6 @@ def main():
     
     # optinionated formatting
     if '{{cookiecutter.opinionated_formatting}}' == 'no':
-        raise NotImplementedError('edit pyproject.toml: https://github.com/atloo1/python-cookiecutter/issues/7')
         raise NotImplementedError('edit .pre-commit-config.yaml: https://github.com/atloo1/python-cookiecutter/issues/7')
     
     subprocess.run('poetry install --without dev', shell=True)
