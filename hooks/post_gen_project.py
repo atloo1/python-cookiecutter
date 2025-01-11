@@ -58,7 +58,7 @@ def main():
     if '{{cookiecutter.dockerize}}' == 'no':
         subprocess.run(f'rm {DOCKERFILE_PATH}', shell=True)
         subprocess.run(f'rm {DOCKERIGNORE_PATH}', shell=True)
-        # raise NotImplementedError('rm poetry-export hook: https://github.com/atloo1/python-cookiecutter/issues/5')
+        raise NotImplementedError('rm poetry-export hook: https://github.com/atloo1/python-cookiecutter/issues/5')
         
     else:
         subprocess.run('poetry export -f requirements.txt --output requirements.txt', shell=True)
