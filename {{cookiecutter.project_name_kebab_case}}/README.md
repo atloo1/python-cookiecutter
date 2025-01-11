@@ -16,11 +16,20 @@
 
 ## prerequisites
 
+{% if cookiecutter.dockerize == 'yes' %}
+
+```
+git clone {{cookiecutter.__project_url}}.git
+cd {{cookiecutter.project_name_kebab_case}}
+```
+
+{% else %}
+
 ### minimum
 
 ```
 git clone {{cookiecutter.__project_url}}.git
-cd {{cookiecutter.project_name_kebab_case}}/
+cd {{cookiecutter.project_name_kebab_case}}
 ```
 
 ### recommended: virtual environment setup with [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation)
@@ -30,12 +39,68 @@ pyenv install {{cookiecutter.project_python_required.split('>=')[1].split(',')[0
 pyenv local {{cookiecutter.project_python_required.split('>=')[1].split(',')[0]}}
 ```
 
+{% endif %}
+
+{% if cookiecutter.dockerize == 'yes' %}
+
+## run
+
+- ### via [Docker](https://docs.docker.com/get-started/get-docker/)
+
+    - #### step 1
+
+        ```
+        docker build . -t {{cookiecutter.__project_name_snake_case}}
+        ```
+
+    - #### step 2 (for Bash users)
+
+        ```
+        docker run \
+            --name {{cookiecutter.__project_name_snake_case}} \
+            {{cookiecutter.__project_name_snake_case}}
+        ```
+
+    - #### step 2 (for PowerShell users)
+
+        ```
+        docker run `
+            --name {{cookiecutter.__project_name_snake_case}} `
+            {{cookiecutter.__project_name_snake_case}}
+        ```
+
+    - #### step 3
+
+        ```
+        docker rm {{cookiecutter.__project_name_snake_case}}
+        ```
+
+- ### via Python interpreter with [Poetry](https://python-poetry.org/docs/#installing-with-pipx)
+
+    - #### step 1 (recommended): virtual environment setup with [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation)
+
+        ```
+        pyenv install {{cookiecutter.project_python_required.split('>=')[1].split(',')[0]}} --skip-existing
+        pyenv local {{cookiecutter.project_python_required.split('>=')[1].split(',')[0]}}
+        ```
+
+    - #### step 2
+
+        ```
+        poetry install --without dev
+        poetry run python -m {{cookiecutter.__project_name_snake_case}}.main{% if cookiecutter.include_cli == 'yes' %} --help{% endif %}
+        ```
+
+{% else %}
+
 ## run (with [Poetry](https://python-poetry.org/docs/#installing-with-pipx))
 
 ```
 poetry install --without dev
-poetry run python -m {{cookiecutter.__project_name_snake_case}}.main --help
+poetry run python -m {{cookiecutter.__project_name_snake_case}}.main{% if cookiecutter.include_cli == 'yes' %} --help{% endif %}
 ```
+
+{% endif %}
 
 ## develop
 
@@ -47,9 +112,12 @@ poetry run python -m {{cookiecutter.__project_name_snake_case}}.main --help
     ```
 
 - ### proactively pre-commit
+
     ```
     poetry run pre-commit run --all-files
     ```
+
+{% if cookiecutter.include_testing == 'yes' %}
 
 - ### proactively test locally, mirroring the GitHub action
 
@@ -57,4 +125,10 @@ poetry run python -m {{cookiecutter.__project_name_snake_case}}.main --help
     poetry run pytest
     ```
 
+{% endif %}
+
+{% if cookiecutter.include_renovate == 'yes' %}
+
 - ### [give Renovate repository access](https://github.com/apps/renovate) if setting up own CI/CD
+
+{% endif %}

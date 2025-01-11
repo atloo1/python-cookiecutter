@@ -44,7 +44,7 @@
     cd python-cookiecutter/
     poetry install
     poetry run cruft .
-    cp <resulting-repo> ../
+    mv <resulting-repo>/ ../
     ```
 
   - #### step 2: with `cookiecutter`
@@ -52,3 +52,31 @@
     ```
     cookiecutter python-cookiecutter/
     ```
+
+## template options
+
+`project_name_kebab_case`: project name slug AKA [kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case)
+
+`project_author_name`: author's name*
+
+`project_author_email`: (optional) author's email*
+
+`project_description`: brief project description for `pyproject.toml` & `README.md` headline.
+
+`project_license`: multiple choices of common open source licenses & a DIY proprietary one
+
+`project_python_required`: project's Python version range
+
+`project_version`: [semver](https://semver.org/#semantic-versioning-specification-semver) project version
+
+`dockerize`: containerize the project?
+
+`include_cli`: use a [`click`](https://click.palletsprojects.com/en/stable/) command line interface?
+
+`opinionated_formatting`: enforce syntax compliance according to [`.pre-commit-config.yaml`](https://github.com/atloo1/python-cookiecutter/blob/main/%7B%7Bcookiecutter.project_name_kebab_case%7D%7D/.pre-commit-config.yaml), principally, [`mypy`](https://mypy-lang.org/) & [`ruff`](https://docs.astral.sh/ruff/)?
+
+`include_testing`: use [pytest](https://docs.pytest.org/en/stable/) & a corresponding [GitHub action](https://github.com/atloo1/python-cookiecutter/blob/main/%7B%7Bcookiecutter.project_name_kebab_case%7D%7D/.github/workflows/ci.yaml) step?
+
+`include_renovate`: use [Renovate](https://docs.renovatebot.com/#renovate-documentation) dependency updater?
+
+\* only single author supported: append more to `pyproject.toml` post generation

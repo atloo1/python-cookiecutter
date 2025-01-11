@@ -1,3 +1,0 @@
-Copyright {% now 'local', '%Y' %} {{cookiecutter.project_author_name}}
-
-TODO proprietary license

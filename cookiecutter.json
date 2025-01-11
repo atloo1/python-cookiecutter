@@ -28,6 +28,10 @@
     "yes",
     "no"
   ],
+  "include_renovate": [
+    "yes",
+    "no"
+  ],
   "_copy_without_render": [
     ".github/renovate.json",
     ".github/workflows/ci.yaml"
