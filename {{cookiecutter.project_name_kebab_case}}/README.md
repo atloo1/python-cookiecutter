@@ -88,7 +88,7 @@ pyenv local {{cookiecutter.project_python_required.split('>=')[1].split(',')[0]}
 
         ```
         poetry install --without dev
-        poetry run python -m {{cookiecutter.__project_name_snake_case}}.main --help
+        poetry run python -m {{cookiecutter.__project_name_snake_case}}.main{% if cookiecutter.include_cli == 'yes' %} --help{% endif %}
         ```
 
 {% else %}
@@ -97,7 +97,7 @@ pyenv local {{cookiecutter.project_python_required.split('>=')[1].split(',')[0]}
 
 ```
 poetry install --without dev
-poetry run python -m {{cookiecutter.__project_name_snake_case}}.main --help
+poetry run python -m {{cookiecutter.__project_name_snake_case}}.main{% if cookiecutter.include_cli == 'yes' %} --help{% endif %}
 ```
 
 {% endif %}
