@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM python:{{cookiecutter.project_python_required.split('>=')[1].split(',')[0].strip()}}-slim AS base
+FROM python:{{cookiecutter.project_python_required.split('>=')[1].split(',')[0]}}-slim AS base
 
 # Python quirks:
 # [1] don't write pyc files

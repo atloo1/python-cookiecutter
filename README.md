@@ -8,29 +8,47 @@
 [![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 
-Poetry managed Python project template with options for pre-commit, linting, testing, containerization, & CI/CD.
+`Poetry` managed Python project template with `pre-commit`, as well as options for opinionated formatting, testing, containerization, & CI/CD.
 
 ## prerequisites
 
-- ### [cruft](https://github.com/cruft/cruft?tab=readme-ov-file#installation) (recommended) or [cookiecutter](https://github.com/cookiecutter/cookiecutter?tab=readme-ov-file#installation)
+- ### [`cruft`](https://github.com/cruft/cruft?tab=readme-ov-file#installation) (recommended), [`cookiecutter`](https://github.com/cookiecutter/cookiecutter?tab=readme-ov-file#installation), or [`Poetry`](https://python-poetry.org/docs/#installing-with-pipx)
 
 ## run
 
-- ### remotely with cruft (recommended)
+- ### remotely
+
+  - #### with `cruft` (recommended)
 
     ```
     cruft create https://github.com/atloo1/python-cookiecutter
     ```
 
-- ### remotely with cookiecutter
+  - #### with `cookiecutter`
 
-  ```
-  cookiecutter https://github.com/atloo1/python-cookiecutter.git
-  ```
-  
-- ### locally with cookiecutter
+    ```
+    cookiecutter https://github.com/atloo1/python-cookiecutter
+    ```
 
-  ```
-  git clone https://github.com/atloo1/python-cookiecutter.git
-  cookiecutter python-cookiecutter/
-  ```
+- ### locally
+
+  - #### step 1
+
+    ```
+    git clone https://github.com/atloo1/python-cookiecutter.git
+    ```
+
+  - #### step 2: with `cruft` via `Poetry`
+
+    ```
+    cd python-cookiecutter/
+    poetry install
+    poetry run cruft .
+    cp <resulting-repo> ../
+    ```
+
+  - #### step 2: with `cookiecutter`
+
+    ```
+    cookiecutter python-cookiecutter/
+    ```
