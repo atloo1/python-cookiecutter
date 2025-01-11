@@ -44,7 +44,7 @@
     cd python-cookiecutter/
     poetry install
     poetry run cruft .
-    cp <resulting-repo> ../
+    mv <resulting-repo>/ ../
     ```
 
   - #### step 2: with `cookiecutter`
