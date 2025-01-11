@@ -5,6 +5,7 @@ from pathlib import Path
 PROJECT_ROOT_PATH = Path('.').resolve()
 DOCKERFILE_PATH = PROJECT_ROOT_PATH / 'Dockerfile'
 DOCKERIGNORE_PATH = PROJECT_ROOT_PATH / '.dockerignore'
+RENOVATE_PATH = PROJECT_ROOT_PATH / '.github/renovate.json'
 TESTS_FOLDER = PROJECT_ROOT_PATH / 'tests'
 PROJECT_MAIN_PATH = PROJECT_ROOT_PATH / f'{{cookiecutter.__project_name_snake_case}}/main.py' 
 PROJECT_README_PATH = PROJECT_ROOT_PATH / 'README.md'
@@ -42,6 +43,10 @@ def main():
     if '{{cookiecutter.include_testing}}' == 'no':
         subprocess.run(f'rm -r {TESTS_FOLDER}', shell=True)
         raise NotImplementedError('edit ci.yaml: https://github.com/atloo1/python-cookiecutter/issues/4')
+    
+    # renovate
+    if '{{cookiecutter.include_renovate}}' == 'no':
+        subprocess.run(f'rm {RENOVATE_PATH}', shell=True)
     
     # opinionated formatting
     if '{{cookiecutter.opinionated_formatting}}' == 'no':

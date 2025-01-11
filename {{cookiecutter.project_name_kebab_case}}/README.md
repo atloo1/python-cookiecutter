@@ -127,4 +127,8 @@ poetry run python -m {{cookiecutter.__project_name_snake_case}}.main{% if cookie
 
 {% endif %}
 
+{% if cookiecutter.include_renovate == 'yes' %}
+
 - ### [give Renovate repository access](https://github.com/apps/renovate) if setting up own CI/CD
+
+{% endif %}
