@@ -5,11 +5,9 @@ from pathlib import Path
 PROJECT_ROOT_PATH = Path('.').resolve()
 DOCKERFILE_PATH = PROJECT_ROOT_PATH / 'Dockerfile'
 DOCKERIGNORE_PATH = PROJECT_ROOT_PATH / '.dockerignore'
-MAINS_FOLDER = PROJECT_ROOT_PATH / 'mains' 
 TESTS_FOLDER = PROJECT_ROOT_PATH / 'tests'
 PROJECT_MAIN_PATH = PROJECT_ROOT_PATH / f'{{cookiecutter.__project_name_snake_case}}/main.py' 
 PROJECT_README_PATH = PROJECT_ROOT_PATH / 'README.md'
-TARGET_MAIN_PATH = MAINS_FOLDER / ('main.py' if '{{cookiecutter.include_cli}}' == 'no' else 'main_cli.py')
 CLI_DEPENDENCIES = {
     'click',
 }
@@ -40,12 +38,6 @@ def main():
     # pyproject.toml
     if dependencies_to_remove:
         subprocess.run(f'poetry remove {DEPENDENCIES_TO_REMOVE}', shell=True)
-    
-    # CLI
-    subprocess.run(f'mv {TARGET_MAIN_PATH} {PROJECT_MAIN_PATH}', shell=True)
-    subprocess.run(f'rm -r {MAINS_FOLDER}', shell=True)
-    # if '{{cookiecutter.include_cli}}' == 'no':
-        # raise NotImplementedError('rm --help in README run: https://github.com/atloo1/python-cookiecutter/issues/16')
     
     # testing
     if '{{cookiecutter.include_testing}}' == 'no':
