@@ -84,7 +84,7 @@ repos:
           - pyi
           - python
 
-    - repo: https://github.com/executablebooks/mdformat
+  - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.19
     hooks:
       - id: mdformat
