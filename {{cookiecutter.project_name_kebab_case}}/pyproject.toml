@@ -8,9 +8,9 @@ authors = [
 license = "{{cookiecutter.project_license}}"
 readme = "README.md"
 requires-python = "{{cookiecutter.project_python_required}}"
-
-[tool.poetry.dependencies]
-click = ">=8,<9"
+dependencies = [
+    "click (>=8.0.0,<9.0.0)"
+]
 
 [tool.poetry.group.dev.dependencies]
 mypy = ">=1,<2"
