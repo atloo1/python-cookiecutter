@@ -4,8 +4,13 @@ repos:
     # https://python-poetry.org/docs/pre-commit-hooks/
     hooks:
       - id: poetry-check
-      - id: poetry-export
       - id: poetry-lock
+
+  - repo: https://github.com/python-poetry/poetry-plugin-export
+    rev: 1.9.0
+    # https://github.com/python-poetry/poetry-plugin-export/blob/main/.pre-commit-hooks.yaml
+    hooks:
+      - id: poetry-export
 
   - repo: https://github.com/pre-commit/pre-commit
     rev: v4.0.1
