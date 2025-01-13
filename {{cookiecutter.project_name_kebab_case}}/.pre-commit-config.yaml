@@ -18,6 +18,34 @@ repos:
     hooks:
       - id: validate_manifest
 
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    # https://pre-commit.com/hooks.html
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-xml
+      - id: check-yaml
+      - id: debug-statements
+      - id: detect-aws-credentials
+        args:
+          - --allow-missing-credentials
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: name-tests-test
+      - id: mixed-line-ending
+      - id: pretty-format-json
+        args:
+          - --autofix
+      - id: sort-simple-yaml
+      - id: trailing-whitespace
+
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.13.0
     # https://github.com/pre-commit/mirrors-mypy?tab=readme-ov-file#using-mypy-with-pre-commit
@@ -50,35 +78,7 @@ repos:
           - pyi
           - python
 
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
-    # https://pre-commit.com/hooks.html
-    hooks:
-      - id: check-added-large-files
-      - id: check-ast
-      - id: check-case-conflict
-      - id: check-docstring-first
-      - id: check-json
-      - id: check-merge-conflict
-      - id: check-toml
-      - id: check-xml
-      - id: check-yaml
-      - id: debug-statements
-      - id: detect-aws-credentials
-        args:
-          - --allow-missing-credentials
-      - id: detect-private-key
-      - id: end-of-file-fixer
-      - id: fix-byte-order-marker
-      - id: name-tests-test
-      - id: mixed-line-ending
-      - id: pretty-format-json
-        args:
-          - --autofix
-      - id: sort-simple-yaml
-      - id: trailing-whitespace
-
-  - repo: https://github.com/executablebooks/mdformat
+    - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.19
     hooks:
       - id: mdformat
