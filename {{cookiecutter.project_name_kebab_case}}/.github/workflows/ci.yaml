@@ -39,6 +39,10 @@ jobs:
           poetry run pre-commit install
           poetry run pre-commit run --all-files
 
+{% if cookiecutter.include_testing == 'yes' %}
+
       - name: pytest
         run: |
           poetry run pytest
+
+{% endif %}
