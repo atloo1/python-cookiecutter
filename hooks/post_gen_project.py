@@ -49,10 +49,6 @@ def main():
     if '{{cookiecutter.include_renovate}}' == 'no':
         subprocess.run(f'rm {RENOVATE_PATH}', shell=True)
     
-    # opinionated formatting
-    if '{{cookiecutter.opinionated_formatting}}' == 'no':
-        raise NotImplementedError('edit .pre-commit-config.yaml: https://github.com/atloo1/python-cookiecutter/issues/7')
-    
     subprocess.run('poetry install --without dev', shell=True)
     
     # Docker

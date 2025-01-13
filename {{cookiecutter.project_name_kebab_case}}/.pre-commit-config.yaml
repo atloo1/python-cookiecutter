@@ -46,6 +46,8 @@ repos:
       - id: sort-simple-yaml
       - id: trailing-whitespace
 
+{% if cookiecutter.opinionated_formatting == 'yes' %}
+
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.13.0
     # https://github.com/pre-commit/mirrors-mypy?tab=readme-ov-file#using-mypy-with-pre-commit
@@ -82,6 +84,8 @@ repos:
     rev: 0.7.19
     hooks:
       - id: mdformat
+
+{% endif %}
 
   - repo: https://github.com/atloo1/check-pyproject-incremented
     rev: 111ead31714999c28bbee9a987e4d9977940fa4f
