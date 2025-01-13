@@ -6,11 +6,15 @@ repos:
       - id: poetry-check
       - id: poetry-lock
 
+{% if cookiecutter.dockerize == 'yes' %}
+
   - repo: https://github.com/python-poetry/poetry-plugin-export
     rev: 1.9.0
     # https://github.com/python-poetry/poetry-plugin-export/blob/main/.pre-commit-hooks.yaml
     hooks:
       - id: poetry-export
+
+{% endif %}
 
   - repo: https://github.com/pre-commit/pre-commit
     rev: v4.0.1
