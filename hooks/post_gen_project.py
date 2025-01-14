@@ -60,6 +60,13 @@ def main():
         
     subprocess.run('git add .', shell=True)
     subprocess.run('git commit -m "cookiecutter initial commit"', shell=True)
+    
+    # TODO temporary debugging #19
+    # subprocess.run('poetry install', shell=True)
+    # subprocess.run('poetry run pre-commit install', shell=True)
+    # subprocess.run('poetry run pre-commit run --all-files', shell=True)
+    # subprocess.run('git add .', shell=True)
+    # subprocess.run('git commit -m "linting"', shell=True)
 
 
 if __name__ == '__main__':
