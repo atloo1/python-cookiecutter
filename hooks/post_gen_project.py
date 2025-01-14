@@ -43,7 +43,6 @@ def main():
     # testing
     if '{{cookiecutter.include_testing}}' == 'no':
         subprocess.run(f'rm -r {TESTS_FOLDER}', shell=True)
-        raise NotImplementedError('edit ci.yaml: https://github.com/atloo1/python-cookiecutter/issues/4')
     
     # renovate
     if '{{cookiecutter.include_renovate}}' == 'no':
@@ -55,7 +54,6 @@ def main():
     if '{{cookiecutter.dockerize}}' == 'no':
         subprocess.run(f'rm {DOCKERFILE_PATH}', shell=True)
         subprocess.run(f'rm {DOCKERIGNORE_PATH}', shell=True)
-        raise NotImplementedError('rm poetry-export hook: https://github.com/atloo1/python-cookiecutter/issues/5')
         
     else:
         subprocess.run('poetry export -f requirements.txt --output requirements.txt', shell=True)
