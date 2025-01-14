@@ -33,8 +33,7 @@
     "no"
   ],
   "_copy_without_render": [
-    ".github/renovate.json",
-    ".github/workflows/ci.yaml"
+    ".github/renovate.json"
   ],
   "__project_name_snake_case": "{{cookiecutter.project_name_kebab_case.replace('-', '_')}}",
   "__project_url": "https://github.com/atloo1/{{cookiecutter.project_name_kebab_case}}"

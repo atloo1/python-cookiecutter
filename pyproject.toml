@@ -1,6 +1,6 @@
 [project]
 name = "python-cookiecutter"
-version = "0.4.0"
+version = "0.5.0"
 description = "Poetry managed Python project template"
 authors = [
     {name = "atloo1"}
@@ -8,9 +8,9 @@ authors = [
 license = "MIT"
 readme = "README.md"
 requires-python = ">=3.9,<4"
-
-[tool.poetry.dependencies]
-cruft = ">=2,<3"
+dependencies = [
+    "cruft (>=2.0.0,<3.0.0)"
+]
 
 [build-system]
 requires = ["poetry-core>=2,<3"]

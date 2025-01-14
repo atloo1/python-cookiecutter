@@ -21,8 +21,6 @@ jobs:
 
     strategy:
       fail-fast: false
-      matrix:
-        python-version: ['3.9']
 
     steps:
       - name: checkout
@@ -31,7 +29,7 @@ jobs:
       - name: poetry install
         uses: packetcoders/action-setup-cache-python-poetry@main
         with:
-          python-version: ${{matrix.python-version}}
+          python-version: {{cookiecutter.project_python_required.split('>=')[1].split(',')[0]}}
           poetry-version: 2.0.0
 
       - name: pre-commit
@@ -39,6 +37,10 @@ jobs:
           poetry run pre-commit install
           poetry run pre-commit run --all-files
 
+{% if cookiecutter.include_testing == 'yes' %}
+
       - name: pytest
         run: |
           poetry run pytest
+
+{% endif %}

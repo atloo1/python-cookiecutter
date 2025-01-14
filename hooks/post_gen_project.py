@@ -22,13 +22,14 @@ TESTING_DEPENDENCIES = {
 
 # drop specified dependencies
 dependencies_to_remove = set()
-if '{{cookiecutter.include_cli}}' == 'no':
-    dependencies_to_remove |= CLI_DEPENDENCIES
-if '{{cookiecutter.opinionated_formatting}}' == 'no':
-    dependencies_to_remove |= FORMATTING_DEPENDENCIES
-if '{{cookiecutter.include_testing}}' == 'no':
-    dependencies_to_remove |= TESTING_DEPENDENCIES
-DEPENDENCIES_TO_REMOVE = ' '.join(list(dependencies_to_remove))
+for (option, dependencies) in [
+    ('{{cookiecutter.include_cli}}', CLI_DEPENDENCIES),
+    ('{{cookiecutter.opinionated_formatting}}', FORMATTING_DEPENDENCIES),
+    ('{{cookiecutter.include_testing}}', TESTING_DEPENDENCIES),
+]:
+    if option == 'no':
+        dependencies_to_remove |= dependencies
+DEPENDENCIES_TO_REMOVE = ' '.join(dependencies_to_remove)
 
 
 def main():
@@ -47,10 +48,6 @@ def main():
     # renovate
     if '{{cookiecutter.include_renovate}}' == 'no':
         subprocess.run(f'rm {RENOVATE_PATH}', shell=True)
-    
-    # opinionated formatting
-    if '{{cookiecutter.opinionated_formatting}}' == 'no':
-        raise NotImplementedError('edit .pre-commit-config.yaml: https://github.com/atloo1/python-cookiecutter/issues/7')
     
     subprocess.run('poetry install --without dev', shell=True)
     
