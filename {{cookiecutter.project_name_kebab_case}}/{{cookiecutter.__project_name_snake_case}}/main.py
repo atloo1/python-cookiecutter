@@ -6,9 +6,7 @@ run with:
 poetry run python -m {{cookiecutter.__project_name_snake_case}}.main{% if cookiecutter.include_cli == 'yes' %} --help{%- endif %}
 ```
 """
-
-{%- if cookiecutter.include_cli == 'yes' %}
-
+{% if cookiecutter.include_cli == 'yes' %}
 from pathlib import Path, PosixPath
 from typing import Union
 
@@ -45,14 +43,12 @@ def main(
 def _main(in_filepath: PosixPath, out_filepath: PosixPath):
 	"""Private click CLI for main()."""
 	main(in_filepath, out_filepath)
-
-{%- else %}
+{% else %}
 
 def main():
 	"""TODO docstring"""
 	raise NotImplementedError
-
-{%- endif %}
+{% endif %}
 
 if __name__ == '__main__':
 	{% if cookiecutter.include_cli == 'yes' %}_{%- endif %}main()
