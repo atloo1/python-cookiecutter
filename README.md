@@ -17,38 +17,27 @@
 ## run
 
 - ### remotely
-
   - #### with `cruft` (recommended)
-
     ```
     cruft create https://github.com/atloo1/python-cookiecutter
     ```
-
   - #### with `cookiecutter`
-
     ```
     cookiecutter https://github.com/atloo1/python-cookiecutter
     ```
-
 - ### locally
-
   - #### step 1
-
     ```
     git clone https://github.com/atloo1/python-cookiecutter.git
     ```
-
   - #### step 2: with `cruft` via `Poetry`
-
     ```
     cd python-cookiecutter/
     poetry install
     poetry run cruft .
     mv <resulting-repo>/ ../
     ```
-
   - #### step 2: with `cookiecutter`
-
     ```
     cookiecutter python-cookiecutter/
     ```
@@ -57,9 +46,9 @@
 
 `project_name_kebab_case`: project name slug AKA [kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case)
 
-`project_author_name`: author's name*
+`project_author_name`: author's name\*
 
-`project_author_email`: (optional) author's email*
+`project_author_email`: (optional) author's email\*
 
 `project_description`: brief project description for `pyproject.toml` & `README.md` headline.
 
