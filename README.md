@@ -64,6 +64,8 @@
 
 `include_cli`: use a [`click`](https://click.palletsprojects.com/en/stable/) command line interface?
 
+`include_pre_commit`: include [pre-commit](https://pre-commit.com/#intro) & (if also enabled) its [linting & testing hooks](https://github.com/atloo1/python-cookiecutter/blob/main/%7B%7Bcookiecutter.project_name_kebab_case%7D%7D/.pre-commit-config.yaml)?
+
 `include_renovate`: use [Renovate](https://docs.renovatebot.com/#renovate-documentation) dependency updater?
 
 `include_testing`: use [pytest](https://docs.pytest.org/en/stable/) & a corresponding [GitHub action](https://github.com/atloo1/python-cookiecutter/blob/main/%7B%7Bcookiecutter.project_name_kebab_case%7D%7D/.github/workflows/ci.yaml) step?

@@ -3,18 +3,23 @@ import sys
 from pathlib import Path
 
 PROJECT_ROOT_PATH = Path('.').resolve()
-CI_YAML_PATH = PROJECT_ROOT_PATH / '.github/workflows/ci.yaml'
 DOCKERFILE_PATH = PROJECT_ROOT_PATH / 'Dockerfile'
 DOCKERIGNORE_PATH = PROJECT_ROOT_PATH / '.dockerignore'
+GITHUB_CI_CONFIG_PATH = PROJECT_ROOT_PATH / '.github/workflows/ci.yaml'
+PRE_COMMIT_CONFIG_PATH = PROJECT_ROOT_PATH / '.pre-commit-config.yaml'
+PROJECT_MAIN_PATH = PROJECT_ROOT_PATH / '{cookiecutter.__project_name_snake_case}/main.py'
 RENOVATE_PATH = PROJECT_ROOT_PATH / '.github/renovate.json'
 TESTS_FOLDER = PROJECT_ROOT_PATH / 'tests'
-PROJECT_MAIN_PATH = PROJECT_ROOT_PATH / '{cookiecutter.__project_name_snake_case}/main.py'
+
 CLI_DEPENDENCIES = {
 	'click',
 }
 FORMATTING_DEPENDENCIES = {
 	'mypy',
 	'ruff',
+}
+PRE_COMMIT_DEPENDENCIES = {
+	'pre-commit'
 }
 TESTING_DEPENDENCIES = {
 	'pytest',
@@ -24,8 +29,9 @@ TESTING_DEPENDENCIES = {
 dependencies_to_remove = set()
 for option, dependencies in [
 	('{{cookiecutter.include_cli}}', CLI_DEPENDENCIES),
-	('{{cookiecutter.opinionated_formatting}}', FORMATTING_DEPENDENCIES),
+	('{{cookiecutter.include_pre_commit}}', PRE_COMMIT_DEPENDENCIES),
 	('{{cookiecutter.include_testing}}', TESTING_DEPENDENCIES),
+	('{{cookiecutter.opinionated_formatting}}', FORMATTING_DEPENDENCIES),
 ]:
 	if option == 'no':
 		dependencies_to_remove |= dependencies
@@ -60,17 +66,23 @@ def main():
 
 	# continuous integration on GitHub runners
 	if '{{cookiecutter.continuous_integration}}' == 'no':
-		subprocess.run(f'rm {CI_YAML_PATH}', shell=True)
+		subprocess.run(f'rm {GITHUB_CI_CONFIG_PATH}', shell=True)
 
-		# initial commit
+	# pre-commit
+	if '{{cookiecutter.include_pre_commit}}' == 'no':
+		subprocess.run(f'rm {PRE_COMMIT_CONFIG_PATH}', shell=True)
+
+	# initial commit
 	subprocess.run('git add .', shell=True)
 	subprocess.run('git commit -m v{{cookiecutter.project_version}}', shell=True)
 
-	subprocess.run('poetry install', shell=True)
-	subprocess.run('poetry run pre-commit install', shell=True)
-	subprocess.run('poetry run pre-commit run --all-files', shell=True)
-	subprocess.run('git add .', shell=True)
-	subprocess.run('git commit -m "linting"', shell=True)
+	# run pre-commit & commit
+	if '{{cookiecutter.include_pre_commit}}' == 'yes':
+		subprocess.run('poetry install', shell=True)
+		subprocess.run('poetry run pre-commit install', shell=True)
+		subprocess.run('poetry run pre-commit run --all-files', shell=True)
+		subprocess.run('git add .', shell=True)
+		subprocess.run('git commit -m "pre-commit"', shell=True)
 
 
 if __name__ == '__main__':

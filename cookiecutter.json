@@ -24,6 +24,10 @@
     "yes",
     "no"
   ],
+  "include_pre_commit": [
+    "yes",
+    "no"
+  ],
   "include_renovate": [
     "yes",
     "no"
