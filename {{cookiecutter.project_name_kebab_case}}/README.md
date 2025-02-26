@@ -15,19 +15,14 @@
 {{cookiecutter.project_description}}
 
 ## prerequisites
-{% if cookiecutter.dockerize == 'yes' %}
-```
-git clone {{cookiecutter.__project_url}}.git
-cd {{cookiecutter.project_name_kebab_case}}
-```
-{% else %}
+
 ### minimum
 
 ```
 git clone {{cookiecutter.__project_url}}.git
 cd {{cookiecutter.project_name_kebab_case}}
 ```
-
+{% if cookiecutter.dockerize == 'no' %}
 ### recommended: virtual environment setup with [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation)
 
 ```
