@@ -15,9 +15,9 @@
 {{cookiecutter.project_description}}
 
 ## prerequisites
-
+{% if cookiecutter.dockerize == 'no' %}
 ### minimum
-
+{% endif %}
 ```
 git clone {{cookiecutter.__project_url}}.git
 cd {{cookiecutter.project_name_kebab_case}}
