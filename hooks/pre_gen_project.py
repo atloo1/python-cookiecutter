@@ -2,7 +2,10 @@ import re
 
 KEBAB_CASE_REGEX = r'^[-a-zA-Z][-a-zA-Z0-9]+$'
 PROJECT_PYTHON_REGEX = r'^>=(\d{1,}).(\d{1,}),<(\d{1,})$'
-SEMVER_REGEX = r'^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$'
+SEMVER_REGEX = (
+    r'^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)'
+    r'(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$'
+)
 
 # contextualize errors
 KEBAB_CASE_EXPLAINER_URL = 'https://en.wikipedia.org/wiki/Letter_case#Kebab_case'
