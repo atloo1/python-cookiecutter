@@ -62,6 +62,7 @@ def main():
 	if '{{cookiecutter.continuous_integration}}' == 'no':
 		subprocess.run(f'rm {CI_YAML_PATH}', shell=True)
 
+		# initial commit
 	subprocess.run('git add .', shell=True)
 	subprocess.run('git commit -m v{{cookiecutter.project_version}}', shell=True)
 
