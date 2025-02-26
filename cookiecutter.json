@@ -20,7 +20,7 @@
     "yes",
     "no"
   ],
-  "opinionated_formatting": [
+  "include_renovate": [
     "yes",
     "no"
   ],
@@ -28,7 +28,7 @@
     "yes",
     "no"
   ],
-  "include_renovate": [
+  "opinionated_formatting": [
     "yes",
     "no"
   ],
