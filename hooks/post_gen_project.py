@@ -8,7 +8,6 @@ DOCKERIGNORE_PATH = PROJECT_ROOT_PATH / '.dockerignore'
 RENOVATE_PATH = PROJECT_ROOT_PATH / '.github/renovate.json'
 TESTS_FOLDER = PROJECT_ROOT_PATH / 'tests'
 PROJECT_MAIN_PATH = PROJECT_ROOT_PATH / f'{{cookiecutter.__project_name_snake_case}}/main.py' 
-PROJECT_README_PATH = PROJECT_ROOT_PATH / 'README.md'
 CLI_DEPENDENCIES = {
     'click',
 }
