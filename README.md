@@ -69,6 +69,8 @@
 
 `project_version`: [semver](https://semver.org/#semantic-versioning-specification-semver) project version
 
+`continuous_integration`: run [testing workflows](https://github.com/atloo1/python-cookiecutter/blob/main/%7B%7Bcookiecutter.project_name_kebab_case%7D%7D/.github/workflows/ci.yaml) on [GitHub runners](https://docs.github.com/en/actions/about-github-actions/about-continuous-integration-with-github-actions#about-continuous-integration-using-github-actions)?
+
 `dockerize`: containerize the project?
 
 `include_cli`: use a [`click`](https://click.palletsprojects.com/en/stable/) command line interface?

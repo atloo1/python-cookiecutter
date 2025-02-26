@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 
 PROJECT_ROOT_PATH = Path('.').resolve()
+CI_YAML_PATH = PROJECT_ROOT_PATH / '.github/workflows/ci.yaml'
 DOCKERFILE_PATH = PROJECT_ROOT_PATH / 'Dockerfile'
 DOCKERIGNORE_PATH = PROJECT_ROOT_PATH / '.dockerignore'
 RENOVATE_PATH = PROJECT_ROOT_PATH / '.github/renovate.json'
@@ -56,6 +57,10 @@ def main():
         
     else:
         subprocess.run('poetry export -f requirements.txt --output requirements.txt', shell=True)
+
+    # continuous integration on GitHub runners
+    if '{{cookiecutter.continuous_integration}}' == 'no':
+        subprocess.run(f'rm {CI_YAML_PATH}', shell=True)
         
     subprocess.run('git add .', shell=True)
     subprocess.run('git commit -m "cookiecutter initial commit"', shell=True)
