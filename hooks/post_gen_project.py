@@ -63,7 +63,7 @@ def main():
 		subprocess.run(f'rm {CI_YAML_PATH}', shell=True)
 
 	subprocess.run('git add .', shell=True)
-	subprocess.run('git commit -m "cookiecutter initial commit"', shell=True)
+	subprocess.run('git commit -m v{{cookiecutter.project_version}}', shell=True)
 
 	subprocess.run('poetry install', shell=True)
 	subprocess.run('poetry run pre-commit install', shell=True)
