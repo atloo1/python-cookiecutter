@@ -6,18 +6,18 @@
 [![GitHub License](https://img.shields.io/github/license/atloo1/{{cookiecutter.project_name_kebab_case}})](https://github.com/atloo1/{{cookiecutter.project_name_kebab_case}}/blob/main/LICENSE)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/atloo1/{{cookiecutter.project_name_kebab_case}})
 
-{% if cookiecutter.opinionated_formatting == 'yes' %}[![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/){% endif -%}
-[![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-{% if cookiecutter.include_renovate == 'yes' %}[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/){% endif -%}
-{% if cookiecutter.opinionated_formatting == 'yes' %}[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff){% endif %}
-
+{% if cookiecutter.opinionated_formatting == 'yes' %}[![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
+{% endif %}[![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
+{% if cookiecutter.include_pre_commit == 'yes' %}[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+{% endif %}{% if cookiecutter.include_renovate == 'yes' %}[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
+{% endif %}{% if cookiecutter.opinionated_formatting == 'yes' %}[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+{% endif %}
 {{cookiecutter.project_description}}
 
 ## prerequisites
-
+{% if cookiecutter.dockerize == 'no' %}
 ### minimum
-
+{% endif %}
 ```
 git clone {{cookiecutter.__project_url}}.git
 cd {{cookiecutter.project_name_kebab_case}}
@@ -78,18 +78,22 @@ poetry run python -m {{cookiecutter.__project_name_snake_case}}.main{% if cookie
 - ### [Poetry](https://python-poetry.org/docs/#installing-with-pipx) setup
   ```
   poetry install
+{%- if cookiecutter.include_pre_commit == 'yes' %}
   poetry run pre-commit install
+{%- endif %}
   ```
+{%- if cookiecutter.include_pre_commit == 'yes' %}
 - ### proactively pre-commit
   ```
   poetry run pre-commit run --all-files
   ```
-{% if cookiecutter.include_testing == 'yes' -%}
+{%- endif %}
+{%- if cookiecutter.include_testing == 'yes' %}
 - ### proactively test locally, mirroring the GitHub action
   ```
   poetry run pytest
   ```
-{% endif %}
-{%- if cookiecutter.include_renovate == 'yes' -%}
+{%- endif %}
+{%- if cookiecutter.include_renovate == 'yes' %}
 - ### [give Renovate repository access](https://github.com/apps/renovate) if setting up own CI/CD
-{% endif %}
+{%- endif %}

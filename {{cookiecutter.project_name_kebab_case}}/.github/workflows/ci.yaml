@@ -31,12 +31,12 @@ jobs:
         with:
           python-version: {{cookiecutter.project_python_required.split('>=')[1].split(',')[0]}}
           poetry-version: 2.0.0
-
+{% if cookiecutter.include_pre_commit == 'yes' %}
       - name: pre-commit
         run: |
           poetry run pre-commit install
           poetry run pre-commit run --all-files
-{% if cookiecutter.include_testing == 'yes' %}
+{% endif %}{% if cookiecutter.include_testing == 'yes' %}
       - name: pytest
         run: |
           poetry run pytest

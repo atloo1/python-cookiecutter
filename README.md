@@ -17,38 +17,27 @@
 ## run
 
 - ### remotely
-
   - #### with `cruft` (recommended)
-
     ```
     cruft create https://github.com/atloo1/python-cookiecutter
     ```
-
   - #### with `cookiecutter`
-
     ```
     cookiecutter https://github.com/atloo1/python-cookiecutter
     ```
-
 - ### locally
-
   - #### step 1
-
     ```
     git clone https://github.com/atloo1/python-cookiecutter.git
     ```
-
   - #### step 2: with `cruft` via `Poetry`
-
     ```
     cd python-cookiecutter/
     poetry install
     poetry run cruft .
     mv <resulting-repo>/ ../
     ```
-
   - #### step 2: with `cookiecutter`
-
     ```
     cookiecutter python-cookiecutter/
     ```
@@ -57,9 +46,9 @@
 
 `project_name_kebab_case`: project name slug AKA [kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case)
 
-`project_author_name`: author's name*
+`project_author_name`: author's name\*
 
-`project_author_email`: (optional) author's email*
+`project_author_email`: (optional) author's email\*
 
 `project_description`: brief project description for `pyproject.toml` & `README.md` headline.
 
@@ -74,6 +63,8 @@
 `dockerize`: containerize the project?
 
 `include_cli`: use a [`click`](https://click.palletsprojects.com/en/stable/) command line interface?
+
+`include_pre_commit`: include [pre-commit](https://pre-commit.com/#intro) & (if also enabled) its [linting & testing hooks](https://github.com/atloo1/python-cookiecutter/blob/main/%7B%7Bcookiecutter.project_name_kebab_case%7D%7D/.pre-commit-config.yaml)?
 
 `include_renovate`: use [Renovate](https://docs.renovatebot.com/#renovate-documentation) dependency updater?
 
