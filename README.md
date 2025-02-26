@@ -69,14 +69,16 @@
 
 `project_version`: [semver](https://semver.org/#semantic-versioning-specification-semver) project version
 
+`continuous_integration`: run [testing workflows](https://github.com/atloo1/python-cookiecutter/blob/main/%7B%7Bcookiecutter.project_name_kebab_case%7D%7D/.github/workflows/ci.yaml) on [GitHub runners](https://docs.github.com/en/actions/about-github-actions/about-continuous-integration-with-github-actions#about-continuous-integration-using-github-actions)?
+
 `dockerize`: containerize the project?
 
 `include_cli`: use a [`click`](https://click.palletsprojects.com/en/stable/) command line interface?
 
-`opinionated_formatting`: enforce syntax compliance according to [`.pre-commit-config.yaml`](https://github.com/atloo1/python-cookiecutter/blob/main/%7B%7Bcookiecutter.project_name_kebab_case%7D%7D/.pre-commit-config.yaml), principally, [`mypy`](https://mypy-lang.org/) & [`ruff`](https://docs.astral.sh/ruff/)?
+`include_renovate`: use [Renovate](https://docs.renovatebot.com/#renovate-documentation) dependency updater?
 
 `include_testing`: use [pytest](https://docs.pytest.org/en/stable/) & a corresponding [GitHub action](https://github.com/atloo1/python-cookiecutter/blob/main/%7B%7Bcookiecutter.project_name_kebab_case%7D%7D/.github/workflows/ci.yaml) step?
 
-`include_renovate`: use [Renovate](https://docs.renovatebot.com/#renovate-documentation) dependency updater?
+`opinionated_formatting`: enforce syntax compliance according to [`.pre-commit-config.yaml`](https://github.com/atloo1/python-cookiecutter/blob/main/%7B%7Bcookiecutter.project_name_kebab_case%7D%7D/.pre-commit-config.yaml), principally, [`mypy`](https://mypy-lang.org/) & [`ruff`](https://docs.astral.sh/ruff/)?
 
 \* only single author supported: append more to `pyproject.toml` post generation

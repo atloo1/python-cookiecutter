@@ -5,17 +5,13 @@ repos:
     hooks:
       - id: poetry-check
       - id: poetry-lock
-
 {% if cookiecutter.dockerize == 'yes' %}
-
   - repo: https://github.com/python-poetry/poetry-plugin-export
     rev: 1.9.0
     # https://github.com/python-poetry/poetry-plugin-export/blob/main/.pre-commit-hooks.yaml
     hooks:
       - id: poetry-export
-
 {% endif %}
-
   - repo: https://github.com/pre-commit/pre-commit
     rev: v4.0.1
     # https://github.com/pre-commit/pre-commit/blob/main/.pre-commit-hooks.yaml
@@ -49,9 +45,7 @@ repos:
           - --autofix
       - id: sort-simple-yaml
       - id: trailing-whitespace
-
 {% if cookiecutter.opinionated_formatting == 'yes' %}
-
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.13.0
     # https://github.com/pre-commit/mirrors-mypy?tab=readme-ov-file#using-mypy-with-pre-commit
@@ -88,9 +82,7 @@ repos:
     rev: 0.7.19
     hooks:
       - id: mdformat
-
 {% endif %}
-
   - repo: https://github.com/atloo1/check-pyproject-incremented
     rev: 111ead31714999c28bbee9a987e4d9977940fa4f
     # https://github.com/atloo1/check-pyproject-incremented/?tab=readme-ov-file#check-pyproject-incremented

@@ -21,9 +21,7 @@ ruff = ">=0.9,<1"
 [build-system]
 requires = ["poetry-core>=2,<3"]
 build-backend = "poetry.core.masonry.api"
-
-{% if cookiecutter.opinionated_formatting == 'yes' %}
-
+{%if cookiecutter.opinionated_formatting == 'yes' %}
 [tool.ruff]
 line-length = 120
 
@@ -40,5 +38,4 @@ select = [
     "SIM",  # flake8-simplify
     "UP",   # pyupgrade
 ]
-
 {% endif %}

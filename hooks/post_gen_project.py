@@ -3,12 +3,12 @@ import sys
 from pathlib import Path
 
 PROJECT_ROOT_PATH = Path('.').resolve()
+CI_YAML_PATH = PROJECT_ROOT_PATH / '.github/workflows/ci.yaml'
 DOCKERFILE_PATH = PROJECT_ROOT_PATH / 'Dockerfile'
 DOCKERIGNORE_PATH = PROJECT_ROOT_PATH / '.dockerignore'
 RENOVATE_PATH = PROJECT_ROOT_PATH / '.github/renovate.json'
 TESTS_FOLDER = PROJECT_ROOT_PATH / 'tests'
 PROJECT_MAIN_PATH = PROJECT_ROOT_PATH / f'{{cookiecutter.__project_name_snake_case}}/main.py' 
-PROJECT_README_PATH = PROJECT_ROOT_PATH / 'README.md'
 CLI_DEPENDENCIES = {
     'click',
 }
@@ -43,7 +43,6 @@ def main():
     # testing
     if '{{cookiecutter.include_testing}}' == 'no':
         subprocess.run(f'rm -r {TESTS_FOLDER}', shell=True)
-        raise NotImplementedError('edit ci.yaml: https://github.com/atloo1/python-cookiecutter/issues/4')
     
     # renovate
     if '{{cookiecutter.include_renovate}}' == 'no':
@@ -55,10 +54,13 @@ def main():
     if '{{cookiecutter.dockerize}}' == 'no':
         subprocess.run(f'rm {DOCKERFILE_PATH}', shell=True)
         subprocess.run(f'rm {DOCKERIGNORE_PATH}', shell=True)
-        raise NotImplementedError('rm poetry-export hook: https://github.com/atloo1/python-cookiecutter/issues/5')
         
     else:
         subprocess.run('poetry export -f requirements.txt --output requirements.txt', shell=True)
+
+    # continuous integration on GitHub runners
+    if '{{cookiecutter.continuous_integration}}' == 'no':
+        subprocess.run(f'rm {CI_YAML_PATH}', shell=True)
         
     subprocess.run('git add .', shell=True)
     subprocess.run('git commit -m "cookiecutter initial commit"', shell=True)

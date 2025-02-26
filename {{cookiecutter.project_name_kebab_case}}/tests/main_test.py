@@ -12,5 +12,5 @@ from {{cookiecutter.__project_name_snake_case}} import main
 
 
 def test_main():
-    with pytest.raises(NotImplementedError):
-        main.main()
+	with pytest.raises(NotImplementedError):
+		main.main()

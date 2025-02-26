@@ -12,6 +12,10 @@
   ],
   "project_python_required": ">=3.9,<4",
   "project_version": "0.1.0",
+  "continuous_integration": [
+    "yes",
+    "no"
+  ],
   "dockerize": [
     "yes",
     "no"
@@ -20,7 +24,7 @@
     "yes",
     "no"
   ],
-  "opinionated_formatting": [
+  "include_renovate": [
     "yes",
     "no"
   ],
@@ -28,7 +32,7 @@
     "yes",
     "no"
   ],
-  "include_renovate": [
+  "opinionated_formatting": [
     "yes",
     "no"
   ],
