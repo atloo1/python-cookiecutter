@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: poetry install
         uses: packetcoders/action-setup-cache-python-poetry@main
